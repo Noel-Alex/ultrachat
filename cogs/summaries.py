@@ -76,7 +76,7 @@ class SummariesView(discord.ui.View):
     async def button_callback2(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
-        del_summary(self.summary_ids[self.page - 1], id)
+        del_summary(summary_id= self.summary_ids[self.page - 1], user_id = str(interaction.user.id))
         print("Deleted", self.summary_ids[self.page - 1])
         self.summary_ids.remove(self.summary_ids[self.page - 1])
 
@@ -131,7 +131,7 @@ class Summaries(commands.Cog):
             for i in response.json()
             if (str(ctx.author.id) in i.values()) and (str(ctx.guild.id) in i.values())
         ]
-        summary_ids = [i["summary_id"] for i in summaries_list]
+        summary_ids = [i["SummaryID"] for i in summaries_list]
         print(summary_ids)
         # bound checking
         if num > len(summaries_list):
@@ -147,7 +147,7 @@ class Summaries(commands.Cog):
             pages.append(
                 embed_generator(
                     title=f"Summary {index+1}:",
-                    text=i["summary"],
+                    text=i["Content"],
                     summary_id=summary_ids[index],
                 )
             )

@@ -26,7 +26,7 @@ thumbnail = os.getenv("EMBED_THUMBNAIL")
 def summarize_document(file_name="message_history.txt"):
     print("generating summary")
     with open(file_name, "r", encoding="utf-8") as f:
-        if len(f.read()) > 10000:
+        if len(f.read()) > 1000:
             return summarisers.large_summariser(file_name=file_name)
 
     # Apply nest_asyncio
@@ -53,7 +53,7 @@ def summarize_document(file_name="message_history.txt"):
     qa_prompt = PromptTemplate(qa_prompt_tmpl)
 
     # Initialize the LLM
-    model = "llama-3.1-8b-instant"
+    model = "llama-3.3-70b-versatile"
     llm = Groq(model=model, api_key=GROQ)
     Settings.llm = llm
 

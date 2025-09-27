@@ -19,7 +19,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 cohere_api_key = os.getenv("COHERE_API_KEY")
 
 
-llm_model = "llama-3.1-8b-instant"
+llm_model = "llama-3.3-70b-versatile"
 
 
 def create_folders_and_file(folder_path, filename) -> str:
@@ -90,7 +90,7 @@ def generate_embeddings(
 
 
 def query(prompt: str, server: str, embedding_path: str, channel: str) -> str:
-    model = "llama-3.1-8b-instant"
+    model = "llama-3.3-70b-versatile"
     llm = Groq(model=model, api_key=GROQ)
     Settings.llm = llm
 
