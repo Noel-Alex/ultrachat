@@ -1,4 +1,3 @@
-Here’s the corrected version of your text with spelling and grammatical mistakes fixed:  
 
 ---
 
